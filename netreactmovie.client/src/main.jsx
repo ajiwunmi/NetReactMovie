@@ -1,7 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 // import App from './App.jsx';
-i//mport AppMovie from "./AppMovie.jsx";
+//mport AppMovie from "./AppMovie.jsx";
 import Test from "./pages/Test.jsx";
 import './index.css'
 
