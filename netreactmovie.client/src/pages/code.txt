@@ -1,0 +1,10 @@
+ // {movies.map(movie=>(
+        //   <div className="movie" key={movie.id}>
+        //     {movie.image && <img src={movie.image} alt=""/>}
+        //     <h2>{movie.title}</h2>
+        //     <p>{movie.description}</p>
+        //     <span>Movie Price: ${movie.price}</span>
+        //     <button className="delete" onClick={()=>handleDelete(movie.id)}>Delete Movie 🗑</button>
+        //     <button className="update"><Link to={`/update/${movie.id}`}>Update Movie 🖊</Link></button>
+        //     </div>
+        // ))}
