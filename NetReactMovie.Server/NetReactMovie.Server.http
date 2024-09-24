@@ -1,0 +1,6 @@
+@NetReactMovie.Server_HostAddress = http://localhost:5128
+
+GET {{NetReactMovie.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34525.116
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetReactMovie.Server", "NetReactMovie.Server\NetReactMovie.Server.csproj", "{A08F5675-18A5-4A10-8BCB-5652B18D5DF2}"
+EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "netreactmovie.client", "netreactmovie.client\netreactmovie.client.esproj", "{C8D21D61-975B-49DA-96EE-E9E0944C0F08}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A08F5675-18A5-4A10-8BCB-5652B18D5DF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A08F5675-18A5-4A10-8BCB-5652B18D5DF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A08F5675-18A5-4A10-8BCB-5652B18D5DF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A08F5675-18A5-4A10-8BCB-5652B18D5DF2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8D21D61-975B-49DA-96EE-E9E0944C0F08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8D21D61-975B-49DA-96EE-E9E0944C0F08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8D21D61-975B-49DA-96EE-E9E0944C0F08}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{C8D21D61-975B-49DA-96EE-E9E0944C0F08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8D21D61-975B-49DA-96EE-E9E0944C0F08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8D21D61-975B-49DA-96EE-E9E0944C0F08}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7990179A-E530-4013-930F-7B25C9993FAC}
+	EndGlobalSection
+EndGlobal
