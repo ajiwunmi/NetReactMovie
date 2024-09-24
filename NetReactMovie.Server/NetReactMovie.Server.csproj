@@ -33,10 +33,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Data\Context\" />
     <Folder Include="Data\ApiClient\" />
-    <Folder Include="Models\Entities\" />
-    <Folder Include="Models\Responses\" />
     <Folder Include="Repositories\Impementations\" />
     <Folder Include="Repositories\Interfaces\" />
     <Folder Include="Services\Interfaces\" />
