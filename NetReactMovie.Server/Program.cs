@@ -32,26 +32,21 @@ builder.Services.AddScoped<IOmdbClient, OmdbClient>();
 // Register IMovieService and MovieService
 builder.Services.AddScoped<IMovieService, MovieService>();
 
-   
+builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
 
+//configure options for OMDb API
+builder.Services.Configure<OmdbAPI>(options =>
+{
+    options.ApiKey = omdbApiKey;
+    options.BaseUrl = omdbBaseUrl;
+});
 
-    builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
-
-    //configure options for OMDb API
-    builder.Services.Configure<OmdbAPI>(options =>
-    {
-        options.ApiKey = omdbApiKey;
-        options.BaseUrl = omdbBaseUrl;
-    });
-
-
-
-    builder.Services.AddControllers();
+builder.Services.AddControllers();
     // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-    builder.Services.AddEndpointsApiExplorer();
-    builder.Services.AddSwaggerGen();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
-    var app = builder.Build();
+var app = builder.Build();
 
 app.UseDefaultFiles();
 app.UseStaticFiles();
