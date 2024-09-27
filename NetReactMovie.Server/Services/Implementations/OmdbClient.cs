@@ -27,7 +27,6 @@ namespace NetReactMovie.Server.Services.Implementations
                 PropertyNameCaseInsensitive = true
             };
 
-
             try
             {
                 using (var client = _clientFactory.CreateClient("HTTPClient"))
