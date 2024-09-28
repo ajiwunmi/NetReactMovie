@@ -1,39 +1,29 @@
-﻿using NetReactMovie.Server.Data.Context;
+﻿using System;
+using Microsoft.EntityFrameworkCore;
+using NetReactMovie.Server.Data.Context;
 using NetReactMovie.Server.Models.Entities;
+using NetReactMovie.Server.Models.Responses;
+using NetReactMovie.Server.Repositories.Implementations;
 using NetReactMovie.Server.Repositories.Interfaces;
-
 namespace NetReactMovie.Server.Repositories.Impementations
 {
-    public class MovieRepository : IMovieRepository
+    public class MovieRepository : Repository<Movie>, IMovieRepository
     {
-        private readonly AppDbContext _context;
+      
         private bool _disposed = false;
 
-        public MovieRepository(AppDbContext context)
-        {
-            _context = context;
-        }
+        public MovieRepository(AppDbContext context) : base(context) { }
 
-
-        public async Task<Movie> GetMovieQueryByIdAsync(int id)
+        public async Task<Movie> GetByImdbIDAsync(string? imdbID)
         {
-            var movie = await _context.Movies.FindAsync(id);
-            if (movie == null)
+            var result = await _context.Movies.FirstOrDefaultAsync(m => m.ImdbID == imdbID);
+            if (result == null)
             {
-                throw new KeyNotFoundException($"Movie with id {id} was not found.");
+                //throw new KeyNotFoundException($"Movie with ID {imdbID} was not found.");
+
+                return new Movie();  
             }
-
-            return movie;
-        }
-
-        public async Task AddMovieQueryAsync(Movie movie)
-        {
-            await _context.Movies.AddAsync(movie);
-        }
-
-        public async Task SaveChangesAsync()
-        {
-            await _context.SaveChangesAsync();
+            return result;
         }
 
         protected virtual void Dispose(bool disposing)

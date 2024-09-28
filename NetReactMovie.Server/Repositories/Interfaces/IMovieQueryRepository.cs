@@ -1,22 +1,11 @@
 ﻿using NetReactMovie.Server.Models.Entities;
-using NetReactMovie.Server.Models.Responses;
 using NetReactMovie.Server.Repositories.Interfaces;
-
 
 namespace NetReactMovie.Server.Repositories.Interfaces
 {
-    public interface IMovieRepository : IRepository<Movie>
+    public interface IMovieQueryRepository : IRepository<MovieQuery>
     {
-        Task<Movie> GetByImdbIDAsync(string? imdbID);
+        Task<IEnumerable<MovieQuery>> GetLatestQueriesAsync(int count);
     }
 }
-
-
-
-
-
-
-
-
-
 

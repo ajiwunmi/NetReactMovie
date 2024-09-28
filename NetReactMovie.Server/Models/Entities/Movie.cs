@@ -1,4 +1,6 @@
-﻿namespace NetReactMovie.Server.Models.Entities
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace NetReactMovie.Server.Models.Entities
 {
     public class Movie
     {
@@ -29,7 +31,9 @@
         public string? Production { get; set; }
         public string? Website { get; set; }
         public string? Response { get; set; }
-        public ICollection<MovieQuery> MovieSearches { get; set; } = new List<MovieQuery>();
+        
+        public ICollection<MovieQuery> MovieQueries { get; set; } = new List<MovieQuery>();
+
 
 
     }

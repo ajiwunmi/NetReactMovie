@@ -7,7 +7,7 @@ namespace NetReactMovie.Server.Models.Responses
     public class QueriedMovieResponse
     {
         [JsonPropertyName("Search")]
-        public List<MovieDetailResponse> Search { get; set; } = new List<MovieDetailResponse>();        
+        public List<MovieDetailResponse> Search { get; set; } = [];        
 
         [JsonPropertyName("totalResults")]
         public string? TotalResults { get; set; }

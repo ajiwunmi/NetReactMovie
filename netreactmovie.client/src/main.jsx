@@ -1,15 +1,17 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-// import App from './App.jsx';
-//mport AppMovie from "./AppMovie.jsx";
-import Test from "./pages/Test.jsx";
-import './index.css'
+import { RouterProvider } from 'react-router-dom';
+import router from './routes/router';
+import { ContextProvider } from './contexts/ContextProvider';
+import './index.css';
+import "./style.css";
 
 
-createRoot(document.getElementById("root")).render(
-	<StrictMode>
-		<>
-			<Test />
-		</>
-	</StrictMode>
-);
+
+createRoot(document.getElementById('root')).render(
+  <StrictMode>
+    <ContextProvider>
+      <RouterProvider router={router} />
+   </ContextProvider>
+  </StrictMode>
+)
