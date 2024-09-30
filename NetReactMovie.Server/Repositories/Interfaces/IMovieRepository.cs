@@ -8,6 +8,8 @@ namespace NetReactMovie.Server.Repositories.Interfaces
     public interface IMovieRepository : IRepository<Movie>
     {
         Task<Movie> GetByImdbIDAsync(string? imdbID);
+
+        Task UpdateMovieAsync(int movieId, Movie updatedMovie);
     }
 }
 

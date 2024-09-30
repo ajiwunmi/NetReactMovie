@@ -1,4 +1,3 @@
-import React from "react";
 import MovieQuery from "./MovieQuery";
 
 const MovieQueryList = ({ queries }) => {

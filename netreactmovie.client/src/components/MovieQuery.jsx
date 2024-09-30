@@ -1,4 +1,3 @@
-import React from "react";
 import MovieItem from "./MovieItem";
 
 const MovieQuery = ({ query }) => {
@@ -10,9 +9,11 @@ const MovieQuery = ({ query }) => {
 				paddingBottom: "1rem",
 			}}
 		>
-			<h2>Search Query: {query.query}</h2>
-			<p>Search Time: {new Date(query.searchTime).toLocaleString()}</p>
-			<h3>Movies:</h3>
+			<h4 style={{ color: "white" }}>Search Query: {query.query}</h4>
+			<h5 style={{ color: "white" }}>
+				Search Time: {new Date(query.searchTime).toLocaleString()}
+			</h5>
+			
 			<div style={{ display: "flex", flexWrap: "wrap" }}>
 				{query.movies.map((movie) => (
 					<MovieItem key={movie.id} movie={movie} />

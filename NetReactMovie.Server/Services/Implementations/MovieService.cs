@@ -71,7 +71,7 @@ namespace NetReactMovie.Server.Services.Implementations
         public async Task<Movie> GetMovieDetailsByIdAsync(int imdbID)
         {
             var cacheKey = $"MovieDetailsByID_{imdbID}";
-            //var queryString = $"i={imdbID}";
+            //
 
             // First check the cache for movie details
             if (_cache.TryGetValue(cacheKey, out Movie cachedDetails))
@@ -87,7 +87,29 @@ namespace NetReactMovie.Server.Services.Implementations
                 // Cache the movie details for quick future access
                 _cache.Set(cacheKey, movieDetail, TimeSpan.FromMinutes(10));
 
-                return movieDetail;
+                //Check if movie has all detail in the db
+                if(movieDetail.Actors == null  && movieDetail.Director==null && movieDetail.Writer == null)
+                {
+                    var queryString = $"i={movieDetail.ImdbID}";
+                    var queriedMovie = await _httpClientFactory.GetOmdbDataAsync<Movie>(queryString);
+                    if (queriedMovie != null)
+                    {
+
+                        // Cache the response for faster future searches
+                        _cache.Set(cacheKey, queriedMovie, TimeSpan.FromMinutes(10));
+
+                        // Log this search into the database
+                        
+                        await _movieRepository.UpdateMovieAsync(imdbID, queriedMovie);
+                        queriedMovie.Id = imdbID;
+                        return queriedMovie;
+                    }
+                    else
+                    {
+                        throw new Exception("Movie search failed. Please try again.");
+                    }
+                }       
+                  return movieDetail;
             }
             else
             {

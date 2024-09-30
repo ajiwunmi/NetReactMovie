@@ -8,6 +8,8 @@ namespace NetReactMovie.Server.Repositories.Interfaces
     {
         Task<IEnumerable<MovieQuery>> GetLatestQueriesAsync(int count);
         Task<IEnumerable<MovieQueryDto>> GetLatestQueriesWithMoviesAsync(int count);
+
+      
     }
 }
 
