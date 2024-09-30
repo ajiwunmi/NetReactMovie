@@ -167,9 +167,11 @@ namespace NetReactMovie.Server.Services.Implementations
                     };
 
                     await _movieRepository.AddAsync(newMovie);
+                    movieQuery.Movies.Add(newMovie);
+
                 }
 
-                movieQuery.Movies.Add(existingMovie);
+                //movieQuery.Movies.Add(existingMovie);
             }
 
             await _movieQueryRepository.AddAsync(movieQuery);
