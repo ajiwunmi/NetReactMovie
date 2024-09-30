@@ -28,6 +28,10 @@ const router = createBrowserRouter([
 				element: <Movies />,
 			},
 			{
+				path: "/movies",
+				element: <Movies />,
+			},
+			{
 				path: "/users/new",
 				element: <UserForm key="create" />,
 			},
@@ -48,6 +52,10 @@ const router = createBrowserRouter([
 			{
 				path: "/signup",
 				element: <Signup />,
+			},
+			{
+				path: "/movies",
+				element: <Movies />,
 			},
 		],
 	},

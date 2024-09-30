@@ -1,4 +1,5 @@
-﻿using NetReactMovie.Server.Models.Entities;
+﻿using NetReactMovie.Server.Data.DTO;
+using NetReactMovie.Server.Models.Entities;
 using NetReactMovie.Server.Models.Responses;
 
 namespace NetReactMovie.Server.Services.Interfaces
@@ -26,7 +27,8 @@ namespace NetReactMovie.Server.Services.Interfaces
         /// Retrieves the latest movie search queries made by users.
         /// </summary>
         /// <returns>A task that represents the asynchronous operation. The task result contains the list of latest movie queries.</returns>
-        Task<IEnumerable<MovieQuery>> GetLatestSearchQueriesAsync();
+        ///Task<IEnumerable<MovieQuery>> GetLatestSearchQueriesAsync();
+        Task<IEnumerable<MovieQueryDto>> GetLatestSearchQueriesAsync();
 
         Task<Movie>GetMovieDetailsByIdAsync(int imdID);
 

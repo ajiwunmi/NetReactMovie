@@ -7,7 +7,7 @@ namespace NetReactMovie.Server.Models.Entities
     {
         public int Id { get; set; }
 
-        //public int MovieId { get; set; }
+       
         public string?  Query { get; set; }
 
         public DateTime SearchTime { get; set; }

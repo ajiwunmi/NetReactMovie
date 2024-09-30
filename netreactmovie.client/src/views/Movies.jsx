@@ -4,23 +4,25 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import axiosClient from "../axios_client";
+import MovieQueryList from "../components/MovieQueryList";
 
 const Movies = () => {
-  const [movies, setMovies] = useState([])
+  const [movieQueryData, setMovieQueryData] = useState([]);
 const url = "/Movie/latest";
 
-  useEffect(()=>{
-    const fetchAllMovies = async ()=> {
+  useEffect(()=>{   
+    fetchAllMovies()
+  },[])
+
+     const fetchAllMovies = async ()=> {
       try{
-      const resp = await axiosClient.get(url)
-      setMovies(resp.data);
+        const resp = await axiosClient.get(url)
+        console.log(resp);
+         setMovieQueryData(resp.data);
       }catch(err){
         console.log(err)
       }
     }
-    fetchAllMovies()
-  },[])
-
 
   const handleDelete = async (id) => {
     try {
@@ -36,10 +38,10 @@ const url = "/Movie/latest";
 
 
   return (
-    <div>
-      <h1>Movie Shop On-line</h1>
-      <div className="movies">
-        {movies.map(movie=>(
+		<div>
+			<h1>Movie Shop On-line</h1>
+			<div className="movies">
+				{/* {movies.map(movie=>(
           <div className="movie" key={movie.id}>
             {movie.image && <img src={movie.image} alt=""/>}
             <h2>{movie.title}</h2>
@@ -48,11 +50,17 @@ const url = "/Movie/latest";
             <button className="delete" onClick={()=>handleDelete(movie.id)}>Delete Movie 🗑</button>
             <button className="update"><Link to={`/update/${movie.id}`}>Update Movie 🖊</Link></button>
             </div>
-        ))}
-      </div>
-      <button className='movieButton'><Link to="/add">Add new movie</Link></button>
-    </div>
-  )
+        ))} */}
+				<div>
+					<h1>Movie Queries</h1>
+					<MovieQueryList queries={movieQueryData} />
+				</div>
+			    </div>
+			{/* <button className="movieButton">
+				<Link to="/add">Add new movie</Link>
+			</button> */}
+		</div>
+	);
 }
 
 

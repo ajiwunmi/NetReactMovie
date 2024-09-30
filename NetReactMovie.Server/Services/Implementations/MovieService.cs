@@ -1,6 +1,7 @@
 ﻿using System.Net.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Caching.Memory;
+using NetReactMovie.Server.Data.DTO;
 using NetReactMovie.Server.Models.Entities;
 using NetReactMovie.Server.Models.Responses;
 using NetReactMovie.Server.Repositories.Impementations;
@@ -121,17 +122,18 @@ namespace NetReactMovie.Server.Services.Implementations
             }
         }
 
-        public async Task<IEnumerable<MovieQuery>> GetLatestSearchQueriesAsync()
+        public async Task<IEnumerable<MovieQueryDto>> GetLatestSearchQueriesAsync()
         {
             var cacheKey = "LatestMovieQueries";
 
-            if (_cache.TryGetValue(cacheKey, out IEnumerable<MovieQuery> cachedQueries))
+            if (_cache.TryGetValue(cacheKey, out IEnumerable<MovieQueryDto> cachedQueries))
             {
                 return cachedQueries;
             }
 
             // Fetch the latest queries from the database
-            var latestQueries = await _movieQueryRepository.GetLatestQueriesAsync(5);
+            //var latestQueries = await _movieQueryRepository.GetLatestQueriesAsync(5);
+            var latestQueries = await _movieQueryRepository.GetLatestQueriesWithMoviesAsync(5);
 
             // Cache the results for a brief time to optimize performance
             _cache.Set(cacheKey, latestQueries, TimeSpan.FromMinutes(5));
@@ -165,10 +167,8 @@ namespace NetReactMovie.Server.Services.Implementations
                         Type = movie.Type,
                         Poster = movie.Poster
                     };
-
                     await _movieRepository.AddAsync(newMovie);
                     movieQuery.Movies.Add(newMovie);
-
                 }
 
                 //movieQuery.Movies.Add(existingMovie);
