@@ -3,10 +3,11 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import axiosClient from "../axios_client";
 import MovieQueryList from "../components/MovieQueryList";
+import MovieSearch from '../components/MovieSearch';
 
 const Movies = () => {
   const [movieQueryData, setMovieQueryData] = useState([]);
-    const url = "/Movie/latest";
+  const url = "/Movie/latest";
 
   useEffect(()=>{   
     fetchAllMovies()
@@ -25,6 +26,7 @@ const Movies = () => {
   
   return (
 		<div>
+            <MovieSearch />
 			<h2 style={{color:"white"}}>Latest Movie Queries</h2>
 			<div className="movies">
 			   	<MovieQueryList queries={movieQueryData} />
