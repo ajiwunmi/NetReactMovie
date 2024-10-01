@@ -1,8 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using NetReactMovie.Server.Models.Entities;
 
-namespace NetReactMovie.Server.Models.Entities
+namespace NetReactMovie.Server.Data.DTO
 {
-    public class Movie
+    public class MovieDto
     {
 
         public int Id { get; set; }
@@ -31,10 +31,5 @@ namespace NetReactMovie.Server.Models.Entities
         public string? Production { get; set; }
         public string? Website { get; set; }
         public string? Response { get; set; }
-        
-        public ICollection<MovieQuery> MovieQueries { get; set; } = new List<MovieQuery>();
-
-
-
     }
 }
