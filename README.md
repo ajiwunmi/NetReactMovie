@@ -1,6 +1,6 @@
 # Movie Search Application
 
-This project is a full-stack Movie Search Application built using **ASP.NET Core** for the backend and **ReactJS** for the frontend. It utilizes the [OMDb API](http://www.omdbapi.com/) to provide movie search functionality and detailed information about movies.
+This web application allows users to search for movies using the OMDB API, save the 5 most recent search queries, and view detailed information about selected movies. It is built using **.NET Core** for the backend and **React** for the frontend. It utilizes the [OMDb API](http://www.omdbapi.com/) to provide movie search functionality and detailed information about movies
 
 ---
 
@@ -11,9 +11,9 @@ This project is a full-stack Movie Search Application built using **ASP.NET Core
 * Users can search for movies by entering a title.
 * Displays a list of search results including movie titles and posters.
 
-### 2. Recent Searches
+### 2. Recent Searches History
 
-* Saves the last 5 search queries for quick access.
+* Saves the last 5 search queries for quick access in both in memory and a database.
 * Users can click on a recent query to re-initiate the search.
 
 ### 3. Display Search Results
@@ -24,10 +24,13 @@ This project is a full-stack Movie Search Application built using **ASP.NET Core
 ### 4. Extended Movie Details
 
 * Clicking on a movie from the search results shows extended information such as:
+
   * Title
   * Plot
   * IMDb Rating
   * Poster
+  * Description
+  * IMDB Rating
 
 ### 5. Backend API
 
@@ -38,21 +41,43 @@ This project is a full-stack Movie Search Application built using **ASP.NET Core
 
 * Backend includes unit tests for API endpoints to ensure proper functionality.
 
----
+## Environment Variables
+
+Configure environment variables in the `<span>.env</span>` file (React) and `<span>appsettings.json</span>` (Backend):
+
+`<span>appsettings.json</span>`
+
+```
+{
+  "OMDB": {
+    "BaseUrl": "http://www.omdbapi.com/",
+    "ApiKey": "Your-OMDB-API-Key"
+  },
+  "ConnectionStrings": {
+    "MovieDb": "Your-Database-Connection-String"
+  }
+}
+```
+
+`.env`
+
+`REACT_APP_API_BASE_URL=http://localhost:5000/api`
 
 ## Architecture
 
 ### Backend
 
-* **Framework** : ASP.NET Core 6
 * **Structure** : Follows a layered architecture:
 * **Controllers** : Handles HTTP requests and routes them to services.
-* **Services** : Contains the business logic for interacting with the OMDb API.
+* **Services** : Contains business logic and communicates with the repository and external APIs.
 * **Models** : Defines data structures used in the application.
 * **Dependency Injection (DI)** : Utilized for injecting services and HttpClient.
 * **Configuration** :
 * OMDb API base URL and API key are stored in `appsettings.json`.
 * HttpClient is configured with DI to use the base URL.
+* **Modern Architecture**: Implements the Controller-Middleware-Service-Repository pattern.
+* **Repository**: Handles database operations (CRUD).
+* **Database**: Stores movies and recent search queries.
 
 ### Frontend
 
@@ -65,23 +90,27 @@ This project is a full-stack Movie Search Application built using **ASP.NET Core
 * **Axios** : Used for HTTP requests to the backend.
 * **State Management** : Uses React hooks (`useState`) for managing state.
 * **Styling** : Basic CSS for a responsive and user-friendly UI.
+* **API Integration**: Uses Axios to call backend endpoints.
 
 ---
 
 ## Dependencies
 
-### Backend
+### Backend(.NET Core):
 
-* **ASP.NET Core 6** : Web application framework.
+* **.NET Core SDK**: v6.0 or later.
+* **Entity Framework Core**: For database operations
 * **Newtonsoft.Json** : JSON serialization/deserialization.
 * **xUnit** : Unit testing framework.
 * **Moq** : Mocking library for testing.
+* **HttpClient**: To make HTTP requests to the OMDB API
 
-### Frontend
+### Frontend(React)
 
 * **ReactJS** : Frontend framework.
 * **Axios** : For making HTTP requests.
 * **Create React App** : Boilerplate for setting up the React project.
+* React-Bootstrap
 
 ---
 
